@@ -15,6 +15,10 @@ Open **http://127.0.0.1:5000** — dashboard, records table with filters, add/ed
 with the same server-side validation as the CLI, summary, warnings, charts, report
 downloads, and bulk CSV import. Requires Flask (`pip install flask` or `apt install python3-flask`).
 
+**Browser slide deck:** `/slides` (or https://community-garden-planner.vercel.app/slides) —
+the 10-slide presentation in HTML with keyboard navigation (`←` `→`, Space, `F` for fullscreen).
+Also available as `Community_Garden_Planner.pptx`.
+
 ### Terminal CLI
 
 ```bash

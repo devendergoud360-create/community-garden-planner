@@ -137,6 +137,11 @@ def inject_globals():
     }
 
 
+@app.route("/slides")
+def slides():
+    return send_from_directory(Path(__file__).parent / "presentation", "index.html")
+
+
 @app.route("/")
 def dashboard():
     records = get_records()

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community Garden Planner — Presentation</title>
+<style>
+:root { --green:#1b5e20; --green2:#2e7d32; --lime:#4caf50; --bg:#f4f7f4; --ink:#1c2b1d; --muted:#5f7260; --line:#dde8dd; --red:#c62828; --amber:#ef6c00; }
+* { box-sizing:border-box; }
+html,body { margin:0; height:100%; overflow:hidden; background:#0d1a0e; font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; }
+#stage { position:absolute; width:1280px; height:720px; left:50%; top:50%; transform-origin:center center; }
+.slide { position:absolute; inset:0; background:var(--bg); color:var(--ink); padding:48px 60px 58px; overflow:hidden; opacity:0; pointer-events:none; transition:opacity .35s ease; }
+.slide.active { opacity:1; pointer-events:auto; }
+.slide h1 { font-size:44px; color:#fff; margin:0 0 12px; }
+.slide h2 { font-size:34px; color:#fff; margin:0; }
+.top { position:absolute; top:0; left:0; right:0; height:104px; background:linear-gradient(120deg,#1b5e20,#2e7d32 65%,#43a047); display:flex; align-items:center; padding:0 46px; }
+.top .sub { position:absolute; top:112px; left:48px; color:var(--muted); font-size:18px; }
+.body { margin-top:86px; }
+.cards { display:grid; gap:18px; }
+.c2 { grid-template-columns:1fr 1fr; }
+.c3 { grid-template-columns:repeat(3,1fr); }
+.card { background:#fff; border:1px solid var(--line); border-left:6px solid var(--green2); border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+.card.amber { border-left-color:var(--amber); } .card.red { border-left-color:var(--red); } .card.lime { border-left-color:var(--lime); }
+.card h3 { margin:0 0 8px; font-size:20px; color:var(--green2); }
+.card.amber h3 { color:var(--amber); } .card.red h3 { color:var(--red); } .card.lime h3 { color:var(--lime); }
+.card p { margin:0; font-size:17px; line-height:1.45; }
+.footer { position:absolute; bottom:16px; left:48px; right:48px; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:14px; }
+.big { font-size:56px; font-weight:800; color:#fff; }
+.title-slide { background:linear-gradient(135deg,#14551a,#2e7d32 70%,#388e3c); color:#fff; }
+.title-slide h1 { font-size:64px; margin-top:130px; }
+.title-slide .tag { font-size:26px; color:#c8e6c9; margin-top:12px; }
+.title-slide .meta { font-size:21px; margin-top:34px; }
+.title-slide .links { position:absolute; bottom:70px; left:60px; }
+.title-slide .links div { font-size:21px; margin:8px 0; }
+.title-slide .links a { color:#fff; text-decoration:underline; text-underline-offset:4px; }
+.end { background:linear-gradient(135deg,#14551a,#2e7d32 70%,#388e3c); text-align:center; color:#fff; }
+.end .big { margin-top:250px; font-size:72px; }
+.end p { font-size:24px; color:#c8e6c9; }
+table { width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; font-size:17px; }
+th { background:var(--green); color:#fff; text-align:left; padding:11px 14px; font-size:17px; }
+td { padding:10px 14px; border-bottom:1px solid var(--line); }
+tr:nth-child(even) td { background:#eef5ee; }
+.bullets { margin:0; padding:0; list-style:none; }
+.bullets li { font-size:21px; line-height:1.5; margin:13px 0; padding-left:28px; position:relative; }
+.bullets li:before { content:'•'; color:var(--lime); position:absolute; left:2px; font-weight:bold; }
+.bullets li.red { color:var(--red); } .bullets li.amber { color:var(--amber); }
+.banner { background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 22px; font-size:22px; color:var(--green2); font-weight:600; }
+.steps li { list-style:none; counter-increment:s; font-size:20px; margin:10px 0; padding-left:52px; position:relative; line-height:1.4; }
+.steps { counter-reset:s; padding:0; margin:0; }
+.steps li:before { content:counter(s); position:absolute; left:0; top:0; width:34px; height:34px; background:var(--green2); color:#fff; border-radius:8px; display:grid; place-items:center; font-size:18px; font-weight:700; }
+.stats { display:flex; gap:18px; margin-bottom:22px; }
+.stat { flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; text-align:center; }
+.stat .n { font-size:40px; font-weight:800; color:var(--green2); }
+.stat .l { font-size:15px; color:var(--muted); }
+.url { background:var(--green); color:#fff; border-radius:12px; padding:22px; font-size:26px; font-weight:700; text-align:center; margin-top:20px; }
+.url a { color:#fff; }
+.src { background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px; font-size:20px; color:var(--green2); text-align:center; margin-top:18px; }
+#bar { position:fixed; top:0; left:0; height:5px; background:var(--lime); z-index:50; transition:width .3s; }
+#nav { position:fixed; bottom:18px; right:22px; z-index:50; display:flex; gap:8px; align-items:center; }
+#nav button { background:#2e7d32; color:#fff; border:0; border-radius:8px; padding:9px 16px; font-size:16px; cursor:pointer; }
+#nav button:hover { background:#4caf50; }
+#num { color:#c8e6c9; font-size:15px; min-width:54px; text-align:center; }
+img.chart { width:520px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.hint { position:fixed; bottom:18px; left:22px; color:#8fae91; font-size:13px; z-index:50; }
+@media print { #nav,#bar,.hint{display:none} html,body{overflow:visible;height:auto} #stage{position:static;transform:none!important} .slide{position:relative;opacity:1;page-break-after:always} }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage">
+
+<section class="slide title-slide active">
+  <h1>Community Garden Planner</h1>
+  <div class="tag">Track garden beds, plants, sowing dates and harvest notes</div>
+  <div class="meta">Hackathon Project #50 &nbsp;·&nbsp; Environment &amp; Sustainability<br>Python 3.10+ &nbsp;·&nbsp; Flask Web UI &nbsp;·&nbsp; JSON/CSV &nbsp;·&nbsp; Matplotlib</div>
+  <div class="links">
+    <div>Live: <a href="https://community-garden-planner.vercel.app" target="_blank">community-garden-planner.vercel.app</a></div>
+    <div>Source: <a href="https://github.com/hanmanthmarkanti-ux/community-garden-planner" target="_blank">github.com/hanmanthmarkanti-ux/community-garden-planner</a></div>
+  </div>
+  <div class="footer" style="color:#c8e6c9"><span>Community Garden Planner · Project #50</span><span>1 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>The Problem</h2></div><div class="sub">Why a focused local garden tool is needed</div>
+  <div class="body c2 cards">
+    <div class="card"><h3>Manual tracking breaks down</h3><p>Spreadsheets and paper logs lead to calculation errors, misplaced entries and delayed status insights.</p></div>
+    <div class="card amber"><h3>Fragmented tools</h3><p>Bed inventory, sowing dates and harvest notes live in different places — no single source of truth.</p></div>
+    <div class="card red"><h3>Enterprise-grade friction</h3><p>Existing solutions demand steep learning curves, paid licenses or intrusive network setups.</p></div>
+    <div class="card"><h3>No quick status view</h3><p>Hard to spot overdue beds, upcoming harvests or failing crops at a glance.</p></div>
+  </div>
+  <div class="banner" style="margin-top:18px">Goal: a focused, accessible Python application that validates entries, persists records locally and presents actionable summaries.</div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>2 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>The Solution</h2></div><div class="sub">One app, two interfaces, shared data</div>
+  <div class="body c3 cards">
+    <div class="card"><h3>Interactive CLI</h3><p>12-option menu, guided prompts, paginated tables and ANSI status flags.</p></div>
+    <div class="card lime"><h3>Flask Web UI</h3><p>Dashboard, records table, forms, charts and report downloads in the browser.</p></div>
+    <div class="card amber"><h3>Shared core logic</h3><p>Both interfaces use the same models, validation, analytics and storage modules.</p></div>
+    <div class="card"><h3>Defensive validation</h3><p>Regex, type and range checks re-prompt on bad input — no crashes.</p></div>
+    <div class="card"><h3>Local persistence</h3><p>Atomic JSON writes; CSV import/export; corrupt files recovered automatically.</p></div>
+    <div class="card red"><h3>Actionable analytics</h3><p>Summaries, threshold warnings, charts and multi-format exports.</p></div>
+  </div>
+  <div class="banner" style="margin-top:18px">44-row demo dataset included — normal entries, boundary values and edge cases.</div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>3 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Architecture &amp; Tech Stack</h2></div><div class="sub">Modular standard-library core with optional libraries</div>
+  <div class="body">
+    <div class="card" style="margin-bottom:18px">
+      <h3>INTERFACES</h3><p style="font-size:21px">main.py (CLI) &nbsp;·&nbsp; webapp.py + 9 Jinja templates (Flask)</p>
+      <h3 style="margin-top:16px">SHARED CORE (garden/)</h3><p style="font-size:21px">models · validation · storage · analytics · plotting · reports · ui</p>
+    </div>
+    <div class="c3 cards">
+      <div class="card"><h3>Backend</h3><p>Python 3.10+ stdlib: csv, json, datetime, dataclasses, statistics, re</p></div>
+      <div class="card"><h3>Storage</h3><p>data/plants.json (live), sample CSV/JSON, row-by-row import logs</p></div>
+      <div class="card amber"><h3>Visualization</h3><p>Matplotlib charts with graceful ImportError fallback</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>4 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Defensive Input Validation</h2></div><div class="sub">Every field has a rule — invalid input never crashes the app</div>
+  <div class="body">
+    <table>
+      <tr><th style="width:26%">Field</th><th>Constraint</th></tr>
+      <tr><td>Bed ID</td><td>1–20 chars, starts alphanumeric; letters, digits, space, _ or -</td></tr>
+      <tr><td>Plant / variety</td><td>2–40 chars; letters, spaces and - ' &amp; . , only</td></tr>
+      <tr><td>Sowing date</td><td>Strict YYYY-MM-DD; within last 10 years; never in the future</td></tr>
+      <tr><td>Days to harvest</td><td>Integer 1–365</td></tr>
+      <tr><td>Yield</td><td>Float 0–1000 kg</td></tr>
+      <tr><td>Status</td><td>planted · growing · harvested · failed</td></tr>
+      <tr><td>Notes / tags</td><td>Max 200 / 80 chars, allowed-character set</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>5 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Analytics &amp; Threshold Warnings</h2></div><div class="sub">From raw records to decisions</div>
+  <div class="body" style="display:flex;gap:40px;align-items:center">
+    <ul class="bullets" style="flex:1">
+      <li>Totals, averages and status distributions</li>
+      <li>Records per bed and top beds by yield</li>
+      <li>Harvests aggregated by month</li>
+      <li class="red">Overdue flags with days late</li>
+      <li class="amber">Due-soon alerts within 14 days</li>
+      <li>Failure-rate anomaly and missing-note checks</li>
+      <li>Failure rate + audit-friendly exports</li>
+    </ul>
+    <div style="text-align:center">
+      <img class="chart" src="/charts/status_distribution.png" onerror="this.onerror=null;this.src='../reports/charts/status_distribution.png'" alt="Status distribution chart">
+      <div style="color:var(--muted);font-size:14px;margin-top:8px">Generated with Matplotlib (real project output)</div>
+    </div>
+  </div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>6 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Persistence, Recovery &amp; Exports</h2></div><div class="sub">Data survives restarts and travels well</div>
+  <div class="body c2 cards">
+    <div class="card"><h3>Reliable local storage</h3><p>Atomic JSON writes; auto-created templates; corrupted files moved to *.corrupt instead of crashing.</p></div>
+    <div class="card amber"><h3>Bulk CSV import</h3><p>Format validation and detailed row-by-row error log — 6 bad rows caught in the demo file.</p></div>
+    <div class="card"><h3>Multi-format reports</h3><p>Markdown executive summary, plain-text audit log, metrics CSV and full records CSV.</p></div>
+    <div class="card lime"><h3>Visual exports</h3><p>Three PNG charts: status distribution, records per bed, sowing trend.</p></div>
+  </div>
+  <div class="banner" style="margin-top:18px">Verified: 50 automated tests pass, including restart persistence, corrupt-file recovery and import error logging.</div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>7 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Live Demo Journey</h2></div><div class="sub">A 2-minute walkthrough</div>
+  <div class="body">
+    <ol class="steps">
+      <li>Open community-garden-planner.vercel.app — clean dashboard with 44 demo records</li>
+      <li>Add a plant: invalid bed/date is rejected live, then valid values save</li>
+      <li>Search and filter records by keyword, bed and status</li>
+      <li>Executive summary: totals, tables, top beds by yield</li>
+      <li>Threshold warnings: overdue and due-soon flags</li>
+      <li>Generate charts and export a Markdown report</li>
+      <li>Reload — records persist and are ready for the next demo run</li>
+    </ol>
+  </div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>8 / 10</span></div>
+</section>
+
+<section class="slide">
+  <div class="top"><h2>Results &amp; Where to Find It</h2></div><div class="sub">Shipped, tested and deployed</div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat"><div class="n">All</div><div class="l">Must-have features</div></div>
+      <div class="stat"><div class="n">50/50</div><div class="l">Automated tests pass</div></div>
+      <div class="stat"><div class="n">44</div><div class="l">Demo records</div></div>
+    </div>
+    <div class="url">LIVE APP — <a href="https://community-garden-planner.vercel.app" target="_blank">community-garden-planner.vercel.app</a></div>
+    <div class="src">SOURCE — github.com/hanmanthmarkanti-ux/community-garden-planner</div>
+  </div>
+  <div class="footer"><span>Community Garden Planner · Project #50</span><span>9 / 10</span></div>
+</section>
+
+<section class="slide end">
+  <div class="big">Thank You</div>
+  <p>Community Garden Planner &nbsp;·&nbsp; Project #50</p>
+  <p style="font-size:19px;margin-top:40px">Questions? Try the live demo: community-garden-planner.vercel.app</p>
+  <div class="footer" style="color:#c8e6c9"><span>Community Garden Planner · Project #50</span><span>10 / 10</span></div>
+</section>
+
+</div>
+
+<div class="hint">← → / Space to navigate &nbsp;·&nbsp; F for fullscreen</div>
+<div id="nav">
+  <button id="prev">← Prev</button>
+  <span id="num">1 / 10</span>
+  <button id="next">Next →</button>
+</div>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+let cur = 0;
+function fit() {
+  const s = Math.min(innerWidth / 1280, innerHeight / 720) * 0.97;
+  document.getElementById('stage').style.transform = `translate(-50%,-50%) scale(${s})`;
+}
+function show(n) {
+  cur = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+  document.getElementById('num').textContent = `${cur+1} / ${slides.length}`;
+  document.getElementById('bar').style.width = `${(cur+1)/slides.length*100}%`;
+  document.getElementById('prev').disabled = cur === 0;
+  document.getElementById('next').disabled = cur === slides.length - 1;
+}
+document.getElementById('prev').onclick = () => show(cur - 1);
+document.getElementById('next').onclick = () => show(cur + 1);
+addEventListener('keydown', e => {
+  if (['ArrowRight',' ','PageDown','Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  if (['ArrowLeft','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+  if (e.key.toLowerCase() === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+});
+addEventListener('resize', fit);
+fit(); show(0);
+</script>
+</body>
+</html>
