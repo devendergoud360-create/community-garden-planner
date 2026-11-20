@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# generated at runtime
+reports/*
+!reports/.gitkeep
+data/plants.json
+data/plants.json.corrupt
+data/plants.csv
+*.tmp
+
+# editors / OS
+.DS_Store
+.idea/
+.vscode/

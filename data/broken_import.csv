@@ -1,0 +1,8 @@
+bed,plant,sown_date,status,days_to_harvest,yield_kg
+A1,Tomato,2026-03-01,growing,60,1.5
+A2,Lettuce,not-a-date,growing,45,
+,Carrot,2026-04-01,planted,70,
+A3,Pepper,2026-04-01,mystery,50,
+A4,Basil,2026-04-15,planted,abc,
+A5,Kale,2026-04-20,growing,55,99999
+A6,Beet,2026-05-01,harvested,60,-5

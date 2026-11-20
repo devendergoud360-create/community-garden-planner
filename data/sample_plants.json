@@ -1,0 +1,746 @@
+[
+  {
+    "id": 1,
+    "bed": "A1",
+    "plant": "Tomato",
+    "variety": "Roma",
+    "sown_date": "2026-06-04",
+    "status": "growing",
+    "days_to_harvest": 30,
+    "expected_harvest": "2026-07-04",
+    "harvest_date": "",
+    "harvest_notes": "Harvested at peak ripeness",
+    "yield_kg": "",
+    "tags": [
+      "shade",
+      "companion"
+    ]
+  },
+  {
+    "id": 2,
+    "bed": "A2",
+    "plant": "Tomato",
+    "variety": "Cherry Sweet",
+    "sown_date": "2026-09-18",
+    "status": "harvested",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-11-02",
+    "harvest_date": "2026-10-30",
+    "harvest_notes": "Standard harvest logged",
+    "yield_kg": 7.46,
+    "tags": [
+      "organic",
+      "edible"
+    ]
+  },
+  {
+    "id": 3,
+    "bed": "A3",
+    "plant": "Lettuce",
+    "variety": "Butterhead",
+    "sown_date": "2026-10-22",
+    "status": "harvested",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-12-21",
+    "harvest_date": "2026-12-16",
+    "harvest_notes": "Bird damage; needs netting",
+    "yield_kg": 7.1,
+    "tags": [
+      "edible",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 4,
+    "bed": "B1",
+    "plant": "Lettuce",
+    "variety": "Romaine",
+    "sown_date": "2026-07-30",
+    "status": "harvested",
+    "days_to_harvest": 100,
+    "expected_harvest": "2026-11-07",
+    "harvest_date": "2026-11-10",
+    "harvest_notes": "Best performer of the bed",
+    "yield_kg": 10.16,
+    "tags": [
+      "organic",
+      "companion"
+    ]
+  },
+  {
+    "id": 5,
+    "bed": "B2",
+    "plant": "Carrot",
+    "variety": "Nantes",
+    "sown_date": "2026-05-20",
+    "status": "failed",
+    "days_to_harvest": 80,
+    "expected_harvest": "2026-08-08",
+    "harvest_date": "",
+    "harvest_notes": "Split fruit after heavy rain",
+    "yield_kg": "",
+    "tags": [
+      "companion",
+      "edible"
+    ]
+  },
+  {
+    "id": 6,
+    "bed": "B3",
+    "plant": "Carrot",
+    "variety": "Danvers",
+    "sown_date": "2026-05-03",
+    "status": "harvested",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-06-17",
+    "harvest_date": "2026-06-24",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": 1.39,
+    "tags": [
+      "shade",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 7,
+    "bed": "C1",
+    "plant": "Basil",
+    "variety": "Genovese",
+    "sown_date": "2026-09-08",
+    "status": "planted",
+    "days_to_harvest": 100,
+    "expected_harvest": "2026-12-17",
+    "harvest_date": "",
+    "harvest_notes": "Bird damage; needs netting",
+    "yield_kg": "",
+    "tags": [
+      "organic",
+      "sun"
+    ]
+  },
+  {
+    "id": 8,
+    "bed": "C2",
+    "plant": "Basil",
+    "variety": "Thai",
+    "sown_date": "2026-10-25",
+    "status": "growing",
+    "days_to_harvest": 80,
+    "expected_harvest": "2027-01-13",
+    "harvest_date": "",
+    "harvest_notes": "Best performer of the bed",
+    "yield_kg": "",
+    "tags": [
+      "companion",
+      "organic"
+    ]
+  },
+  {
+    "id": 9,
+    "bed": "N1",
+    "plant": "Pepper",
+    "variety": "Jalapeno",
+    "sown_date": "2026-11-03",
+    "status": "harvested",
+    "days_to_harvest": 70,
+    "expected_harvest": "2027-01-12",
+    "harvest_date": "2027-01-14",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": 10.86,
+    "tags": [
+      "sun",
+      "shade"
+    ]
+  },
+  {
+    "id": 10,
+    "bed": "S1",
+    "plant": "Pepper",
+    "variety": "Bell Red",
+    "sown_date": "2026-07-21",
+    "status": "harvested",
+    "days_to_harvest": 55,
+    "expected_harvest": "2026-09-14",
+    "harvest_date": "2026-09-20",
+    "harvest_notes": "Perfect size for market stall",
+    "yield_kg": 2.78,
+    "tags": [
+      "shade",
+      "organic"
+    ]
+  },
+  {
+    "id": 11,
+    "bed": "A1",
+    "plant": "Cucumber",
+    "variety": "Marketmore",
+    "sown_date": "2026-06-12",
+    "status": "harvested",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-08-11",
+    "harvest_date": "2026-08-20",
+    "harvest_notes": "Slow start due to cold snap",
+    "yield_kg": 4.87,
+    "tags": [
+      "edible",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 12,
+    "bed": "A2",
+    "plant": "Zucchini",
+    "variety": "Black Beauty",
+    "sown_date": "2026-09-19",
+    "status": "harvested",
+    "days_to_harvest": 30,
+    "expected_harvest": "2026-10-19",
+    "harvest_date": "2026-10-15",
+    "harvest_notes": "Strong germination, thin seedlings",
+    "yield_kg": 10.1,
+    "tags": [
+      "sun",
+      "shade"
+    ]
+  },
+  {
+    "id": 13,
+    "bed": "A3",
+    "plant": "Kale",
+    "variety": "Curly",
+    "sown_date": "2026-10-29",
+    "status": "harvested",
+    "days_to_harvest": 80,
+    "expected_harvest": "2027-01-17",
+    "harvest_date": "2027-01-27",
+    "harvest_notes": "Strong germination, thin seedlings",
+    "yield_kg": 5.07,
+    "tags": [
+      "edible",
+      "sun"
+    ]
+  },
+  {
+    "id": 14,
+    "bed": "B1",
+    "plant": "Spinach",
+    "variety": "Bloomsdale",
+    "sown_date": "2026-10-09",
+    "status": "growing",
+    "days_to_harvest": 55,
+    "expected_harvest": "2026-12-03",
+    "harvest_date": "",
+    "harvest_notes": "Strong germination, thin seedlings",
+    "yield_kg": "",
+    "tags": [
+      "edible",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 15,
+    "bed": "B2",
+    "plant": "Radish",
+    "variety": "Cherry Belle",
+    "sown_date": "2026-06-30",
+    "status": "growing",
+    "days_to_harvest": 90,
+    "expected_harvest": "2026-09-28",
+    "harvest_date": "",
+    "harvest_notes": "Best performer of the bed",
+    "yield_kg": "",
+    "tags": [
+      "sun",
+      "shade"
+    ]
+  },
+  {
+    "id": 16,
+    "bed": "B3",
+    "plant": "Beet",
+    "variety": "Detroit Dark",
+    "sown_date": "2026-09-19",
+    "status": "harvested",
+    "days_to_harvest": 100,
+    "expected_harvest": "2026-12-28",
+    "harvest_date": "2026-12-24",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": 10.79,
+    "tags": [
+      "companion",
+      "edible"
+    ]
+  },
+  {
+    "id": 17,
+    "bed": "C1",
+    "plant": "Bean",
+    "variety": "Blue Lake",
+    "sown_date": "2026-05-24",
+    "status": "failed",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-07-08",
+    "harvest_date": "",
+    "harvest_notes": "Powdery mildew on lower leaves",
+    "yield_kg": "",
+    "tags": [
+      "sun",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 18,
+    "bed": "C2",
+    "plant": "Pea",
+    "variety": "Sugar Ann",
+    "sown_date": "2026-07-18",
+    "status": "growing",
+    "days_to_harvest": 30,
+    "expected_harvest": "2026-08-17",
+    "harvest_date": "",
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "edible",
+      "organic"
+    ]
+  },
+  {
+    "id": 19,
+    "bed": "N1",
+    "plant": "Onion",
+    "variety": "Yellow Sweet",
+    "sown_date": "2026-05-24",
+    "status": "growing",
+    "days_to_harvest": 80,
+    "expected_harvest": "2026-08-12",
+    "harvest_date": "",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": "",
+    "tags": [
+      "shade",
+      "sun"
+    ]
+  },
+  {
+    "id": 20,
+    "bed": "S1",
+    "plant": "Garlic",
+    "variety": "Softneck",
+    "sown_date": "2026-10-05",
+    "status": "planted",
+    "days_to_harvest": 30,
+    "expected_harvest": "2026-11-04",
+    "harvest_date": "",
+    "harvest_notes": "Harvested at peak ripeness",
+    "yield_kg": "",
+    "tags": [
+      "edible",
+      "shade"
+    ]
+  },
+  {
+    "id": 21,
+    "bed": "A1",
+    "plant": "Strawberry",
+    "variety": "Albion",
+    "sown_date": "2026-07-09",
+    "status": "harvested",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-08-23",
+    "harvest_date": "2026-08-27",
+    "harvest_notes": "Standard harvest logged",
+    "yield_kg": 10.55,
+    "tags": [
+      "pollinator",
+      "edible"
+    ]
+  },
+  {
+    "id": 22,
+    "bed": "A2",
+    "plant": "Sunflower",
+    "variety": "Autumn Beauty",
+    "sown_date": "2026-09-25",
+    "status": "harvested",
+    "days_to_harvest": 80,
+    "expected_harvest": "2026-12-14",
+    "harvest_date": "2026-12-14",
+    "harvest_notes": "Delayed by drought; irrigated manually",
+    "yield_kg": 6.83,
+    "tags": [
+      "pollinator",
+      "organic"
+    ]
+  },
+  {
+    "id": 23,
+    "bed": "A3",
+    "plant": "Marigold",
+    "variety": "French Dwarf",
+    "sown_date": "2026-06-14",
+    "status": "harvested",
+    "days_to_harvest": 100,
+    "expected_harvest": "2026-09-22",
+    "harvest_date": "2026-09-20",
+    "harvest_notes": "Excellent flavor; second harvest planned",
+    "yield_kg": 11.63,
+    "tags": [
+      "shade",
+      "companion"
+    ]
+  },
+  {
+    "id": 24,
+    "bed": "B1",
+    "plant": "Cilantro",
+    "variety": "Santo",
+    "sown_date": "2026-10-31",
+    "status": "harvested",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-12-15",
+    "harvest_date": "2026-12-25",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": 10.24,
+    "tags": [
+      "pollinator",
+      "companion"
+    ]
+  },
+  {
+    "id": 25,
+    "bed": "B2",
+    "plant": "Parsley",
+    "variety": "Flat Leaf",
+    "sown_date": "2026-10-13",
+    "status": "planted",
+    "days_to_harvest": 55,
+    "expected_harvest": "2026-12-07",
+    "harvest_date": "",
+    "harvest_notes": "Split fruit after heavy rain",
+    "yield_kg": "",
+    "tags": [
+      "pollinator",
+      "edible"
+    ]
+  },
+  {
+    "id": 26,
+    "bed": "B3",
+    "plant": "Squash",
+    "variety": "Butternut",
+    "sown_date": "2026-07-29",
+    "status": "harvested",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-09-27",
+    "harvest_date": "2026-10-01",
+    "harvest_notes": "Harvested at peak ripeness",
+    "yield_kg": 5.11,
+    "tags": [
+      "edible",
+      "shade"
+    ]
+  },
+  {
+    "id": 27,
+    "bed": "C1",
+    "plant": "Corn",
+    "variety": "Golden Bantam",
+    "sown_date": "2026-07-25",
+    "status": "planted",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-09-08",
+    "harvest_date": "",
+    "harvest_notes": "Strong germination, thin seedlings",
+    "yield_kg": "",
+    "tags": [
+      "companion",
+      "organic"
+    ]
+  },
+  {
+    "id": 28,
+    "bed": "C2",
+    "plant": "Broccoli",
+    "variety": "Calabrese",
+    "sown_date": "2026-08-20",
+    "status": "planted",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-10-19",
+    "harvest_date": "",
+    "harvest_notes": "Best performer of the bed",
+    "yield_kg": "",
+    "tags": [
+      "companion",
+      "organic"
+    ]
+  },
+  {
+    "id": 29,
+    "bed": "N1",
+    "plant": "Cabbage",
+    "variety": "Green Express",
+    "sown_date": "2026-10-27",
+    "status": "planted",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-12-26",
+    "harvest_date": "",
+    "harvest_notes": "Aphids spotted; treated with neem",
+    "yield_kg": "",
+    "tags": [
+      "organic",
+      "shade"
+    ]
+  },
+  {
+    "id": 30,
+    "bed": "S1",
+    "plant": "Turnip",
+    "variety": "Purple Top",
+    "sown_date": "2026-10-27",
+    "status": "harvested",
+    "days_to_harvest": 70,
+    "expected_harvest": "2027-01-05",
+    "harvest_date": "2027-01-15",
+    "harvest_notes": "Standard harvest logged",
+    "yield_kg": 2.84,
+    "tags": [
+      "companion",
+      "pollinator"
+    ]
+  },
+  {
+    "id": 31,
+    "bed": "A1",
+    "plant": "Tomato",
+    "variety": "Roma",
+    "sown_date": "2026-06-20",
+    "status": "planted",
+    "days_to_harvest": 60,
+    "expected_harvest": "2026-08-19",
+    "harvest_date": "",
+    "harvest_notes": "Delayed by drought; irrigated manually",
+    "yield_kg": "",
+    "tags": [
+      "sun",
+      "edible"
+    ]
+  },
+  {
+    "id": 32,
+    "bed": "A2",
+    "plant": "Tomato",
+    "variety": "Cherry Sweet",
+    "sown_date": "2026-09-27",
+    "status": "growing",
+    "days_to_harvest": 45,
+    "expected_harvest": "2026-11-11",
+    "harvest_date": "",
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "sun",
+      "shade"
+    ]
+  },
+  {
+    "bed": "B1",
+    "plant": "Pepper",
+    "variety": "Bell Red",
+    "sown_date": "2026-07-22",
+    "status": "growing",
+    "days_to_harvest": 60,
+    "harvest_notes": "Overdue; fruit set but small",
+    "yield_kg": "",
+    "tags": [
+      "organic",
+      "sun"
+    ],
+    "id": 33,
+    "expected_harvest": "2026-09-20",
+    "harvest_date": ""
+  },
+  {
+    "bed": "A1",
+    "plant": "Lettuce",
+    "variety": "Butterhead",
+    "sown_date": "2026-10-05",
+    "status": "growing",
+    "days_to_harvest": 50,
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "quick",
+      "shade"
+    ],
+    "id": 34,
+    "expected_harvest": "2026-11-24",
+    "harvest_date": ""
+  },
+  {
+    "bed": "A2",
+    "plant": "Radish",
+    "variety": "Cherry Belle",
+    "sown_date": "2026-10-23",
+    "status": "planted",
+    "days_to_harvest": 28,
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "quick"
+    ],
+    "id": 35,
+    "expected_harvest": "2026-11-20",
+    "harvest_date": ""
+  },
+  {
+    "bed": "C1",
+    "plant": "Bean",
+    "variety": "Blue Lake",
+    "sown_date": "2026-08-21",
+    "status": "harvested",
+    "days_to_harvest": 60,
+    "harvest_date": "2026-10-30",
+    "harvest_notes": "Zero yield: total crop loss to blight",
+    "yield_kg": "0",
+    "tags": [
+      "organic",
+      "edible"
+    ],
+    "id": 36,
+    "expected_harvest": "2026-10-20"
+  },
+  {
+    "bed": "N1",
+    "plant": "Squash",
+    "variety": "Butternut",
+    "sown_date": "2026-06-22",
+    "status": "harvested",
+    "days_to_harvest": 120,
+    "harvest_date": "2026-10-25",
+    "harvest_notes": "Record yield from three vines",
+    "yield_kg": "1000",
+    "tags": [
+      "record",
+      "edible"
+    ],
+    "id": 37,
+    "expected_harvest": "2026-10-20"
+  },
+  {
+    "bed": "S1",
+    "plant": "Corn",
+    "variety": "Golden Bantam",
+    "sown_date": "2026-09-10",
+    "status": "failed",
+    "days_to_harvest": 90,
+    "harvest_notes": "Crows destroyed seedlings week 2",
+    "yield_kg": "",
+    "tags": [
+      "pest"
+    ],
+    "id": 38,
+    "expected_harvest": "2026-12-09",
+    "harvest_date": ""
+  },
+  {
+    "bed": "C2",
+    "plant": "Broccoli Romanesco",
+    "variety": "Romanesco Italia",
+    "sown_date": "2026-09-20",
+    "status": "planted",
+    "days_to_harvest": 80,
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "brassica",
+      "sun"
+    ],
+    "id": 39,
+    "expected_harvest": "2026-12-09",
+    "harvest_date": ""
+  },
+  {
+    "bed": "A3",
+    "plant": "Strawberry",
+    "variety": "Albion",
+    "sown_date": "2026-05-03",
+    "status": "harvested",
+    "days_to_harvest": 90,
+    "harvest_date": "2026-10-10",
+    "harvest_notes": "Picked 2.5 kg \u2014 \"sweetest yet\" (family review 9/10)",
+    "yield_kg": "2.5",
+    "tags": [
+      "berry",
+      "perennial"
+    ],
+    "id": 40,
+    "expected_harvest": "2026-08-01"
+  },
+  {
+    "bed": "B2",
+    "plant": "Spinach",
+    "variety": "Bloomsdale",
+    "sown_date": "2026-11-19",
+    "status": "planted",
+    "days_to_harvest": 45,
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "fall",
+      "cool"
+    ],
+    "id": 41,
+    "expected_harvest": "2027-01-03",
+    "harvest_date": ""
+  },
+  {
+    "bed": "B3",
+    "plant": "Garlic",
+    "variety": "Softneck",
+    "sown_date": "2016-11-21",
+    "status": "harvested",
+    "days_to_harvest": 300,
+    "harvest_date": "2017-11-06",
+    "harvest_notes": "Heritage bed established years ago",
+    "yield_kg": "15.75",
+    "tags": [
+      "heritage",
+      "perennial"
+    ],
+    "id": 42,
+    "expected_harvest": "2017-09-17"
+  },
+  {
+    "bed": "S1",
+    "plant": "Cabbage",
+    "variety": "Green Express",
+    "sown_date": "2026-08-11",
+    "status": "planted",
+    "days_to_harvest": 70,
+    "harvest_notes": "Never transplanted; still in tray",
+    "yield_kg": "",
+    "tags": [
+      "brassica"
+    ],
+    "id": 43,
+    "expected_harvest": "2026-10-20",
+    "harvest_date": ""
+  },
+  {
+    "bed": "C1",
+    "plant": "Beet",
+    "variety": "Detroit Dark",
+    "sown_date": "2026-09-25",
+    "status": "growing",
+    "days_to_harvest": 55,
+    "harvest_notes": "",
+    "yield_kg": "",
+    "tags": [
+      "root"
+    ],
+    "id": 44,
+    "expected_harvest": "2026-11-19",
+    "harvest_date": ""
+  }
+]

@@ -1,0 +1,45 @@
+id,bed,plant,variety,sown_date,status,days_to_harvest,expected_harvest,harvest_date,harvest_notes,yield_kg,tags
+1,A1,Tomato,Roma,2026-06-04,growing,30,2026-07-04,,Harvested at peak ripeness,,shade|companion
+2,A2,Tomato,Cherry Sweet,2026-09-18,harvested,45,2026-11-02,2026-10-30,Standard harvest logged,7.46,organic|edible
+3,A3,Lettuce,Butterhead,2026-10-22,harvested,60,2026-12-21,2026-12-16,Bird damage; needs netting,7.1,edible|pollinator
+4,B1,Lettuce,Romaine,2026-07-30,harvested,100,2026-11-07,2026-11-10,Best performer of the bed,10.16,organic|companion
+5,B2,Carrot,Nantes,2026-05-20,failed,80,2026-08-08,,Split fruit after heavy rain,,companion|edible
+6,B3,Carrot,Danvers,2026-05-03,harvested,45,2026-06-17,2026-06-24,Aphids spotted; treated with neem,1.39,shade|pollinator
+7,C1,Basil,Genovese,2026-09-08,planted,100,2026-12-17,,Bird damage; needs netting,,organic|sun
+8,C2,Basil,Thai,2026-10-25,growing,80,2027-01-13,,Best performer of the bed,,companion|organic
+9,N1,Pepper,Jalapeno,2026-11-03,harvested,70,2027-01-12,2027-01-14,Aphids spotted; treated with neem,10.86,sun|shade
+10,S1,Pepper,Bell Red,2026-07-21,harvested,55,2026-09-14,2026-09-20,Perfect size for market stall,2.78,shade|organic
+11,A1,Cucumber,Marketmore,2026-06-12,harvested,60,2026-08-11,2026-08-20,Slow start due to cold snap,4.87,edible|pollinator
+12,A2,Zucchini,Black Beauty,2026-09-19,harvested,30,2026-10-19,2026-10-15,"Strong germination, thin seedlings",10.1,sun|shade
+13,A3,Kale,Curly,2026-10-29,harvested,80,2027-01-17,2027-01-27,"Strong germination, thin seedlings",5.07,edible|sun
+14,B1,Spinach,Bloomsdale,2026-10-09,growing,55,2026-12-03,,"Strong germination, thin seedlings",,edible|pollinator
+15,B2,Radish,Cherry Belle,2026-06-30,growing,90,2026-09-28,,Best performer of the bed,,sun|shade
+16,B3,Beet,Detroit Dark,2026-09-19,harvested,100,2026-12-28,2026-12-24,Aphids spotted; treated with neem,10.79,companion|edible
+17,C1,Bean,Blue Lake,2026-05-24,failed,45,2026-07-08,,Powdery mildew on lower leaves,,sun|pollinator
+18,C2,Pea,Sugar Ann,2026-07-18,growing,30,2026-08-17,,,,edible|organic
+19,N1,Onion,Yellow Sweet,2026-05-24,growing,80,2026-08-12,,Aphids spotted; treated with neem,,shade|sun
+20,S1,Garlic,Softneck,2026-10-05,planted,30,2026-11-04,,Harvested at peak ripeness,,edible|shade
+21,A1,Strawberry,Albion,2026-07-09,harvested,45,2026-08-23,2026-08-27,Standard harvest logged,10.55,pollinator|edible
+22,A2,Sunflower,Autumn Beauty,2026-09-25,harvested,80,2026-12-14,2026-12-14,Delayed by drought; irrigated manually,6.83,pollinator|organic
+23,A3,Marigold,French Dwarf,2026-06-14,harvested,100,2026-09-22,2026-09-20,Excellent flavor; second harvest planned,11.63,shade|companion
+24,B1,Cilantro,Santo,2026-10-31,harvested,45,2026-12-15,2026-12-25,Aphids spotted; treated with neem,10.24,pollinator|companion
+25,B2,Parsley,Flat Leaf,2026-10-13,planted,55,2026-12-07,,Split fruit after heavy rain,,pollinator|edible
+26,B3,Squash,Butternut,2026-07-29,harvested,60,2026-09-27,2026-10-01,Harvested at peak ripeness,5.11,edible|shade
+27,C1,Corn,Golden Bantam,2026-07-25,planted,45,2026-09-08,,"Strong germination, thin seedlings",,companion|organic
+28,C2,Broccoli,Calabrese,2026-08-20,planted,60,2026-10-19,,Best performer of the bed,,companion|organic
+29,N1,Cabbage,Green Express,2026-10-27,planted,60,2026-12-26,,Aphids spotted; treated with neem,,organic|shade
+30,S1,Turnip,Purple Top,2026-10-27,harvested,70,2027-01-05,2027-01-15,Standard harvest logged,2.84,companion|pollinator
+31,A1,Tomato,Roma,2026-06-20,planted,60,2026-08-19,,Delayed by drought; irrigated manually,,sun|edible
+32,A2,Tomato,Cherry Sweet,2026-09-27,growing,45,2026-11-11,,,,sun|shade
+33,B1,Pepper,Bell Red,2026-07-22,growing,60,2026-09-20,,Overdue; fruit set but small,,organic|sun
+34,A1,Lettuce,Butterhead,2026-10-05,growing,50,2026-11-24,,,,quick|shade
+35,A2,Radish,Cherry Belle,2026-10-23,planted,28,2026-11-20,,,,quick
+36,C1,Bean,Blue Lake,2026-08-21,harvested,60,2026-10-20,2026-10-30,Zero yield: total crop loss to blight,0,organic|edible
+37,N1,Squash,Butternut,2026-06-22,harvested,120,2026-10-20,2026-10-25,Record yield from three vines,1000,record|edible
+38,S1,Corn,Golden Bantam,2026-09-10,failed,90,2026-12-09,,Crows destroyed seedlings week 2,,pest
+39,C2,Broccoli Romanesco,Romanesco Italia,2026-09-20,planted,80,2026-12-09,,,,brassica|sun
+40,A3,Strawberry,Albion,2026-05-03,harvested,90,2026-08-01,2026-10-10,"Picked 2.5 kg — ""sweetest yet"" (family review 9/10)",2.5,berry|perennial
+41,B2,Spinach,Bloomsdale,2026-11-19,planted,45,2027-01-03,,,,fall|cool
+42,B3,Garlic,Softneck,2016-11-21,harvested,300,2017-09-17,2017-11-06,Heritage bed established years ago,15.75,heritage|perennial
+43,S1,Cabbage,Green Express,2026-08-11,planted,70,2026-10-20,,Never transplanted; still in tray,,brassica
+44,C1,Beet,Detroit Dark,2026-09-25,growing,55,2026-11-19,,,,root
