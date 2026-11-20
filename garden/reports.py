@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .analytics import summarize, threshold_warnings
 from .models import PlantRecord
-from .storage import CSV_COLUMNS, REPORTS_DIR, ensure_dirs
+from .storage import CSV_COLUMNS, ensure_dirs, reports_dir
 
 
 def _stamp() -> str:
@@ -23,7 +23,7 @@ def _status_line(s: dict) -> str:
 
 def export_markdown(records: list[PlantRecord], path: Path | None = None) -> Path:
     ensure_dirs()
-    target = path or (REPORTS_DIR / f"garden_report_{_stamp()}.md")
+    target = path or (reports_dir() / f"garden_report_{_stamp()}.md")
     s = summarize(records)
     warnings = threshold_warnings(records)
     lines = [
@@ -71,7 +71,7 @@ def export_markdown(records: list[PlantRecord], path: Path | None = None) -> Pat
 
 def export_text_log(records: list[PlantRecord], path: Path | None = None) -> Path:
     ensure_dirs()
-    target = path or (REPORTS_DIR / f"garden_audit_{_stamp()}.txt")
+    target = path or (reports_dir() / f"garden_audit_{_stamp()}.txt")
     s = summarize(records)
     width = 100
     lines = [
@@ -105,7 +105,7 @@ def export_text_log(records: list[PlantRecord], path: Path | None = None) -> Pat
 
 def export_summary_csv(records: list[PlantRecord], path: Path | None = None) -> Path:
     ensure_dirs()
-    target = path or (REPORTS_DIR / f"garden_summary_{_stamp()}.csv")
+    target = path or (reports_dir() / f"garden_summary_{_stamp()}.csv")
     s = summarize(records)
     with target.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh)
@@ -127,7 +127,7 @@ def export_summary_csv(records: list[PlantRecord], path: Path | None = None) -> 
 
 def export_records_csv(records: list[PlantRecord], path: Path | None = None) -> Path:
     ensure_dirs()
-    target = path or (REPORTS_DIR / f"garden_records_{_stamp()}.csv")
+    target = path or (reports_dir() / f"garden_records_{_stamp()}.csv")
     with target.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=CSV_COLUMNS)
         writer.writeheader()

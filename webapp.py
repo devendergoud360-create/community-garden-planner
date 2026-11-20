@@ -29,7 +29,14 @@ storage.ensure_dirs()
 
 
 def get_records() -> list[PlantRecord]:
-    return storage.load_records()
+    records = storage.load_records()
+    if not records and storage.SAMPLE_CSV.exists() and not storage.live_path().exists():
+        imported, _ = storage.import_csv_file(storage.SAMPLE_CSV)
+        for i, r in enumerate(imported, start=1):
+            r.id = i
+        storage.save_records(imported)
+        return imported
+    return records
 
 
 def put_records(records: list[PlantRecord]) -> None:
@@ -260,14 +267,14 @@ def charts_page():
     available = plotting.chart_available()
     results: list[tuple[str, bool]] = []
     if request.method == "POST" and records and available:
-        for item in plotting.generate_all(records, storage.REPORTS_DIR / "charts"):
+        for item in plotting.generate_all(records, storage.reports_dir() / "charts"):
             results.append((Path(item).name, True) if isinstance(item, Path) else (str(item), False))
         if any(ok for _, ok in results):
             flash("Charts generated.", "ok")
         else:
             flash(next((m for m, ok in results if not ok), "Chart generation failed."), "error")
         return redirect(url_for("charts_page"))
-    chart_dir = storage.REPORTS_DIR / "charts"
+    chart_dir = storage.reports_dir() / "charts"
     existing = sorted(p.name for p in chart_dir.glob("*.png")) if chart_dir.exists() else []
     return render_template(
         "charts.html", available=available, charts=existing, mpl_error=plotting.MPL_ERROR
@@ -276,7 +283,7 @@ def charts_page():
 
 @app.route("/charts/<path:name>")
 def chart_image(name: str):
-    return send_from_directory(storage.REPORTS_DIR / "charts", name)
+    return send_from_directory(storage.reports_dir() / "charts", name)
 
 
 @app.route("/reports", methods=["GET", "POST"])
@@ -300,14 +307,14 @@ def reports_page():
         return redirect(url_for("reports_page"))
     files = sorted(
         (p.name, p.stat().st_size)
-        for p in storage.REPORTS_DIR.glob("garden_*.*")
+        for p in storage.reports_dir().glob("garden_*.*")
     )
     return render_template("reports.html", files=files[::-1])
 
 
 @app.route("/reports/download/<path:name>")
 def download_report(name: str):
-    return send_from_directory(storage.REPORTS_DIR, name, as_attachment=True)
+    return send_from_directory(storage.reports_dir(), name, as_attachment=True)
 
 
 @app.route("/import", methods=["GET", "POST"])
@@ -319,7 +326,7 @@ def import_page():
     if request.method == "POST":
         uploaded = request.files.get("file")
         if uploaded and uploaded.filename:
-            tmp = storage.DATA_DIR / "_upload.csv"
+            tmp = storage.writable(storage.DATA_DIR / "_upload.csv")
             uploaded.save(tmp)
         else:
             raw = (request.form.get("path") or "").strip()

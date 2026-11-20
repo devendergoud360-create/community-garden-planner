@@ -18,3 +18,4 @@ data/_upload.csv
 .DS_Store
 .idea/
 .vscode/
+.vercel

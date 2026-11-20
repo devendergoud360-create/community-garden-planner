@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import csv
 import json
+import tempfile
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -22,8 +24,33 @@ CSV_COLUMNS = [
 
 
 def ensure_dirs() -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
+
+
+@lru_cache(maxsize=None)
+def writable(target: Path) -> Path:
+    try:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        probe = target.parent / ".write_probe"
+        probe.touch()
+        probe.unlink()
+        return target
+    except OSError:
+        fallback = Path(tempfile.gettempdir()) / "garden-planner"
+        fallback.mkdir(parents=True, exist_ok=True)
+        return fallback / target.name
+
+
+def live_path() -> Path:
+    return writable(JSON_PATH)
+
+
+def reports_dir() -> Path:
+    return writable(REPORTS_DIR)
 
 
 def _validate_payload(items: Any) -> list[PlantRecord]:
@@ -43,7 +70,7 @@ def _validate_payload(items: Any) -> list[PlantRecord]:
 
 def load_records(path: Path | None = None) -> list[PlantRecord]:
     ensure_dirs()
-    target = path or JSON_PATH
+    target = writable(path or JSON_PATH)
     if not target.exists():
         return []
     try:
@@ -72,7 +99,7 @@ def load_records(path: Path | None = None) -> list[PlantRecord]:
 
 def save_records(records: list[PlantRecord], path: Path | None = None) -> None:
     ensure_dirs()
-    target = path or JSON_PATH
+    target = writable(path or JSON_PATH)
     tmp = target.with_suffix(".tmp")
     payload = [r.to_dict() for r in records]
     try:
@@ -88,7 +115,7 @@ def next_id(records: list[PlantRecord]) -> int:
 
 def export_csv(records: list[PlantRecord], path: Path | None = None) -> Path:
     ensure_dirs()
-    target = path or CSV_PATH
+    target = writable(path or CSV_PATH)
     with target.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=CSV_COLUMNS)
         writer.writeheader()
