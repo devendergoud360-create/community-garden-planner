@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Import · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Bulk CSV Import</h1>
+
+<div class="card" style="max-width:680px">
+  <p class="muted">Required columns: <code>bed</code>, <code>plant</code>, <code>sown_date</code> — optional:
+    <code>variety</code>, <code>status</code>, <code>days_to_harvest</code>, <code>harvest_date</code>,
+    <code>harvest_notes</code>, <code>yield_kg</code>, <code>tags</code> (<code>|</code>-separated).</p>
+
+  <form method="post" enctype="multipart/form-data">
+    <label class="f">Upload a CSV file</label>
+    <input type="file" name="file" accept=".csv">
+
+    <label class="f">…or server path</label>
+    <input name="path" style="width:100%" placeholder="{{ sample_path if sample else '/path/to/file.csv' }}">
+
+    <p style="margin-top:16px">
+      <button class="btn sec" name="action" value="validate" type="submit">Validate only</button>
+      <button class="btn" name="action" value="merge" type="submit">Validate & merge</button>
+    </p>
+  </form>
+  {% if sample %}
+  <p class="muted" style="margin-bottom:0">Demo files: <code>{{ sample_path }}</code> and
+    <code>data/broken_import.csv</code> (bad rows for the error log).</p>
+  {% endif %}
+</div>
+
+{% if errors or preview %}
+<div class="card">
+  <h2 style="margin-top:0">Validation result</h2>
+  {% if errors %}
+    <p><strong style="color:var(--red)">{{ errors|length }} issue(s):</strong></p>
+    {% for e in errors %}<div class="w over">{{ e }}</div>{% endfor %}
+  {% endif %}
+  {% if preview %}
+    <p><strong style="color:var(--green)">{{ preview|length }} valid row(s).</strong>
+      {% if request.form.get('action') != 'merge' %}
+      Press <em>Validate &amp; merge</em> to add them.
+      {% endif %}</p>
+    <table>
+      <thead><tr><th>Bed</th><th>Plant</th><th>Sown</th><th>Status</th></tr></thead>
+      {% for r in preview[:15] %}
+      <tr><td>{{ r.bed }}</td><td>{{ r.plant }}</td><td>{{ r.sown_date }}</td><td>{{ r.status }}</td></tr>
+      {% endfor %}
+    </table>
+    {% if preview|length > 15 %}<p class="muted">… {{ preview|length - 15 }} more</p>{% endif %}
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

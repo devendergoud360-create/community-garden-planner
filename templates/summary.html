@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Summary · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Executive Summary</h1>
+{% if not s %}
+<div class="card empty">No data yet — <a href="{{ url_for('dashboard') }}">seed the demo dataset</a>.</div>
+{% else %}
+
+<div class="cards">
+  <div class="stat"><div class="n">{{ s.total }}</div><div class="l">Records</div></div>
+  <div class="stat"><div class="n">{{ s.beds }}</div><div class="l">Beds</div></div>
+  <div class="stat"><div class="n">{{ '%.1f'|format(s.avg_days_to_harvest) }}</div><div class="l">Avg days to harvest</div></div>
+  <div class="stat"><div class="n">{{ '%.1f'|format(s.total_yield_kg) }}</div><div class="l">Total yield (kg)</div></div>
+  <div class="stat"><div class="n">{{ '%.2f'|format(s.avg_yield_kg) }}</div><div class="l">Avg yield / plant (kg)</div></div>
+  <div class="stat"><div class="n">{{ s.failure_rate }}%</div><div class="l">Failure rate</div></div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <h2 style="margin-top:0">By status</h2>
+    <table>
+      {% for status, count in s.by_status.items() %}
+      <tr><td><span class="badge b-{{ status }}">{{ status }}</span></td><td class="num">{{ count }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">By bed</h2>
+    <table>
+      {% for bed, count in s.by_bed.items() %}
+      <tr><td>{{ bed }}</td><td class="num">{{ count }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% if s.top_beds_by_yield %}
+<div class="card">
+  <h2 style="margin-top:0">Top beds by yield</h2>
+  <table>
+    <thead><tr><th>Bed</th><th class="num">Yield (kg)</th></tr></thead>
+    {% for bed, y in s.top_beds_by_yield[:10] %}
+    <tr><td>{{ bed }}</td><td class="num">{{ '%.2f'|format(y) }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+{% if s.harvests_by_month %}
+<div class="card">
+  <h2 style="margin-top:0">Harvests by month</h2>
+  <table>
+    <thead><tr><th>Month</th><th class="num">Harvested</th></tr></thead>
+    {% for m, c in s.harvests_by_month.items() %}
+    <tr><td>{{ m }}</td><td class="num">{{ c }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+{% if s.overdue %}
+<div class="card">
+  <h2 style="margin-top:0;color:var(--red)">Overdue ({{ s.overdue|length }})</h2>
+  <table>
+    <thead><tr><th>Bed</th><th>Plant</th><th>Due</th><th class="num">Days late</th></tr></thead>
+    {% for r in s.overdue %}
+    <tr><td>{{ r.bed }}</td><td>{{ r.plant }}</td><td>{{ r.expected_harvest }}</td>
+        <td class="num odue">{{ (r.days_until_harvest or 0)|abs }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+<p><a class="btn" href="{{ url_for('reports_page') }}">Export this report</a>
+   <a class="btn sec" href="{{ url_for('charts_page') }}">View charts</a></p>
+{% endif %}
+{% endblock %}

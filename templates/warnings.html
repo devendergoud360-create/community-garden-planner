@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Warnings · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Threshold Warnings</h1>
+<div class="card">
+  {% for w in warnings %}
+    <div class="w {% if w.startswith('OVERDUE') or w.startswith('ANOMALY') %}over{% elif w.startswith('OK') %}ok{% endif %}">{{ w }}</div>
+  {% else %}
+    <div class="muted">No data — nothing to evaluate.</div>
+  {% endfor %}
+</div>
+{% endblock %}

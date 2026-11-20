@@ -4,8 +4,20 @@ A beginner-friendly Python terminal application for tracking garden beds, plants
 
 ## Quick Start
 
+### Web UI (browser)
+
 ```bash
 cd community-garden-planner
+python3 webapp.py
+```
+
+Open **http://127.0.0.1:5000** — dashboard, records table with filters, add/edit forms
+with the same server-side validation as the CLI, summary, warnings, charts, report
+downloads, and bulk CSV import. Requires Flask (`pip install flask` or `apt install python3-flask`).
+
+### Terminal CLI
+
+```bash
 python3 main.py
 ```
 

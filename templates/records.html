@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Records · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Records <span class="muted" style="font-size:14px;font-weight:400">{{ records|length }} of {{ total }}</span></h1>
+
+<div class="card">
+  <form class="filters" method="get" action="{{ url_for('records_page') }}">
+    <div>
+      <label for="q">Keyword</label>
+      <input id="q" name="q" value="{{ q }}" placeholder="plant, bed, notes…" size="18">
+    </div>
+    <div>
+      <label for="bed">Bed</label>
+      <select id="bed" name="bed">
+        <option value="">All beds</option>
+        {% for b in beds %}
+        <option value="{{ b }}" {% if b == fbed %}selected{% endif %}>{{ b }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="status">Status</label>
+      <select id="status" name="status">
+        <option value="">All statuses</option>
+        {% for st in statuses %}
+        <option value="{{ st }}" {% if st == fstatus %}selected{% endif %}>{{ st }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn" type="submit">Filter</button>
+    <a class="btn sec" href="{{ url_for('records_page') }}">Reset</a>
+    <a class="btn" href="{{ url_for('add_record') }}">+ Add</a>
+  </form>
+
+  {% if records %}
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Bed</th><th>Plant</th><th>Variety</th><th>Sown</th><th>Status</th><th>Due</th><th class="num">Yield</th><th>Notes</th><th></th></tr>
+    </thead>
+    <tbody>
+    {% for r in records %}
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.bed }}</td>
+        <td><strong>{{ r.plant }}</strong></td>
+        <td>{{ r.variety or '—' }}</td>
+        <td>{{ r.sown_date }}</td>
+        <td><span class="badge b-{{ r.status }}">{{ r.status }}</span></td>
+        <td>{{ r.expected_harvest }}
+          {% if r.is_overdue %}<span class="odue">OVERDUE</span>
+          {% elif r.due_soon %}<span class="soon">SOON</span>{% endif %}
+        </td>
+        <td class="num">{{ '%.2f'|format(r.yield_kg) if r.yield_kg else '—' }}</td>
+        <td class="muted">{{ (r.harvest_notes[:40] ~ '…') if r.harvest_notes|length > 40 else (r.harvest_notes or '—') }}</td>
+        <td style="white-space:nowrap">
+          <a class="btn sm sec" href="{{ url_for('edit_record', rid=r.id) }}">Edit</a>
+          <form class="inline" method="post" action="{{ url_for('delete_record', rid=r.id) }}"
+                onsubmit="return confirm('Delete #{{ r.id }} — {{ r.plant }} @ {{ r.bed }}?')">
+            <button class="btn sm danger" type="submit">Del</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No records match {% if q or fbed or fstatus %}your filters{% else %}— add or seed some{% endif %}.</div>
+  {% endif %}
+</div>
+{% endblock %}

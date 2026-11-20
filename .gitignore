@@ -11,6 +11,7 @@ reports/*
 data/plants.json
 data/plants.json.corrupt
 data/plants.csv
+data/_upload.csv
 *.tmp
 
 # editors / OS

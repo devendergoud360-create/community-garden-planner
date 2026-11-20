@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+{% if s %}
+<div class="cards">
+  <div class="stat"><div class="n">{{ s.total }}</div><div class="l">Total records</div></div>
+  <div class="stat"><div class="n">{{ s.beds }}</div><div class="l">Garden beds</div></div>
+  <div class="stat"><div class="n">{{ s.by_status.growing + s.by_status.planted }}</div><div class="l">Growing / planted</div></div>
+  <div class="stat"><div class="n">{{ s.harvested_count }}</div><div class="l">Harvested</div></div>
+  <div class="stat"><div class="n">{{ '%.1f'|format(s.avg_days_to_harvest) }}</div><div class="l">Avg days to harvest</div></div>
+  <div class="stat"><div class="n">{{ '%.1f'|format(s.total_yield_kg) }}</div><div class="l">Total yield (kg)</div></div>
+  <div class="stat {% if s.overdue %}warn{% endif %}"><div class="n">{{ s.overdue|length }}</div><div class="l">Overdue</div></div>
+  <div class="stat"><div class="n">{{ s.failure_rate }}%</div><div class="l">Failure rate</div></div>
+</div>
+
+<div class="card">
+  <strong>Recent threshold warnings</strong>
+  <div style="margin-top:10px">
+  {% for w in warnings %}
+    <div class="w {% if w.startswith('OVERDUE') %}over{% elif w.startswith('OK') %}ok{% endif %}">{{ w }}</div>
+  {% else %}
+    <div class="muted">No warnings.</div>
+  {% endfor %}
+  </div>
+  <p style="margin-bottom:0"><a class="btn sm sec" href="{{ url_for('warnings_page') }}">All warnings</a>
+     <a class="btn sm" href="{{ url_for('records_page') }}">Browse records</a>
+     <a class="btn sm sec" href="{{ url_for('add_record') }}">Add plant</a></p>
+</div>
+
+<div class="card">
+  <strong>Record types</strong>
+  <table style="margin-top:8px">
+    {% for status, count in s.by_status.items() %}
+    <tr><td><span class="badge b-{{ status }}">{{ status }}</span></td><td class="num">{{ count }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% else %}
+<div class="card empty">
+  <p>No data yet — seed the demo dataset to explore.</p>
+  <form class="inline" method="post" action="{{ url_for('seed') }}">
+    <button class="btn" type="submit">Seed 44 demo records</button>
+  </form>
+  <p style="margin-top:12px"><a class="btn sec" href="{{ url_for('add_record') }}">Or add your first plant</a></p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if mode == 'edit' else 'Add' }} record · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>{{ 'Edit record #' ~ rec.id if mode == 'edit' else 'Add plant record' }}</h1>
+
+<div class="card" style="max-width:640px">
+<form method="post">
+  <label class="f" for="bed">Bed ID *</label>
+  <input id="bed" name="bed" value="{{ values.get('bed','') }}" class="{{ 'bad' if errors.get('bed') }}"
+         placeholder="A1, North-3…" maxlength="20" required>
+  {% if errors.get('bed') %}<div class="err">{{ errors.bed }}</div>{% endif %}
+
+  <label class="f" for="plant">Plant name *</label>
+  <input id="plant" name="plant" value="{{ values.get('plant','') }}" class="{{ 'bad' if errors.get('plant') }}"
+         placeholder="Tomato" maxlength="40" required>
+  {% if errors.get('plant') %}<div class="err">{{ errors.plant }}</div>{% endif %}
+
+  <label class="f" for="variety">Variety</label>
+  <input id="variety" name="variety" value="{{ values.get('variety','') }}" class="{{ 'bad' if errors.get('variety') }}"
+         placeholder="Roma (optional)" maxlength="40">
+  {% if errors.get('variety') %}<div class="err">{{ errors.variety }}</div>{% endif %}
+
+  <label class="f" for="sown_date">Sowing date *</label>
+  <input id="sown_date" type="date" name="sown_date" value="{{ values.get('sown_date','') }}"
+         class="{{ 'bad' if errors.get('sown_date') }}" required>
+  {% if errors.get('sown_date') %}<div class="err">{{ errors.sown_date }}</div>{% endif %}
+
+  <label class="f" for="status">Status *</label>
+  <select id="status" name="status" class="{{ 'bad' if errors.get('status') }}">
+    {% for st in statuses %}
+    <option value="{{ st }}" {% if values.get('status') == st %}selected{% endif %}>{{ st }}</option>
+    {% endfor %}
+  </select>
+  {% if errors.get('status') %}<div class="err">{{ errors.status }}</div>{% endif %}
+
+  <label class="f" for="days_to_harvest">Days until expected harvest (1–365) *</label>
+  <input id="days_to_harvest" type="number" name="days_to_harvest" min="1" max="365"
+         value="{{ values.get('days_to_harvest', 60) }}" class="{{ 'bad' if errors.get('days_to_harvest') }}" required>
+  {% if errors.get('days_to_harvest') %}<div class="err">{{ errors.days_to_harvest }}</div>{% endif %}
+
+  <label class="f" for="harvest_date">Harvest date</label>
+  <input id="harvest_date" type="date" name="harvest_date" value="{{ values.get('harvest_date','') }}"
+         class="{{ 'bad' if errors.get('harvest_date') }}">
+  {% if errors.get('harvest_date') %}<div class="err">{{ errors.harvest_date }}</div>{% endif %}
+
+  <label class="f" for="yield_kg">Yield in kg (0–1000)</label>
+  <input id="yield_kg" type="number" step="0.01" min="0" max="1000" name="yield_kg"
+         value="{{ values.get('yield_kg','') }}" class="{{ 'bad' if errors.get('yield_kg') }}" placeholder="0.00">
+  {% if errors.get('yield_kg') %}<div class="err">{{ errors.yield_kg }}</div>{% endif %}
+
+  <label class="f" for="harvest_notes">Harvest notes</label>
+  <textarea id="harvest_notes" name="harvest_notes" rows="3" maxlength="200"
+            class="{{ 'bad' if errors.get('harvest_notes') }}" placeholder="Flavor, pests, weather…">{{ values.get('harvest_notes','') }}</textarea>
+  {% if errors.get('harvest_notes') %}<div class="err">{{ errors.harvest_notes }}</div>{% endif %}
+
+  <label class="f" for="tags">Tags (comma-separated)</label>
+  <input id="tags" name="tags" value="{{ values.get('tags','') if values.get('tags') is string else (values.get('tags')|join(', ') if values.get('tags') else '') }}"
+         placeholder="organic, quick, shade">
+
+  <p style="margin-top:18px">
+    <button class="btn" type="submit">{{ 'Save changes' if mode == 'edit' else 'Add record' }}</button>
+    <a class="btn sec" href="{{ url_for('records_page') }}">Cancel</a>
+  </p>
+</form>
+</div>
+{% endblock %}

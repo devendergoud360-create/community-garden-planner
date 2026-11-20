@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Charts · Community Garden Planner{% endblock %}
+{% block content %}
+<h1>Charts</h1>
+
+{% if not available %}
+<div class="flash error">matplotlib is not available: <code>{{ mpl_error }}</code> — install with <code>pip install matplotlib</code>.</div>
+{% elif not record_count %}
+<div class="card empty">No data to chart.</div>
+{% else %}
+<div class="card">
+  <form method="post">
+    <button class="btn" type="submit">Generate charts</button>
+    <span class="muted" style="margin-left:8px">status distribution · records per bed · sowing trend</span>
+  </form>
+</div>
+
+{% if charts %}
+<div class="charts">
+  {% for c in charts %}
+  <div class="card" style="margin:0">
+    <img src="{{ url_for('chart_image', name=c) }}" alt="{{ c }}">
+    <div class="muted" style="font-size:12px;margin-top:6px">{{ c }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% elif not just_generated %}
+<div class="card empty">No charts yet — click <strong>Generate charts</strong>.</div>
+{% endif %}
+{% endif %}
+{% endblock %}
